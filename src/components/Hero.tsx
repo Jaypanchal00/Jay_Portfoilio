@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { useEffect, useState } from "react";
-import DeveloperPhoto from "./jay.png";
+import DeveloperPhoto from "./Proffile.png";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
