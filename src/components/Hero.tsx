@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { useEffect, useState } from "react";
-import DeveloperPhoto from "./Gemini_Generated_Image_pdwjh3pdwjh3pdwj.png";
+import DeveloperPhoto from "./jay.png";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -120,4 +120,3 @@ const Hero = () => {
 };
 
 export default Hero;
-  
