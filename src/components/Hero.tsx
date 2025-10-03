@@ -57,8 +57,8 @@ const Hero = () => {
                 View Work
               </a>
               <a
-                href="/resume.pdf"
-                download="Jay_Panchal_Resume.pdf"
+                href="/Jay-Panchal-FlowCV-Resume-20251001.pdf"
+                download="Jay-Panchal-FlowCV-Resume-20251001.pdf"
                 className="flex items-center gap-2 px-8 py-4 border-2 border-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
               >
                 <Download size={20} />
@@ -103,7 +103,6 @@ const Hero = () => {
             }`}
           >
             <div className="relative">
-              {/* Black/white pulse removed */}
               <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] overflow-hidden border-4 border-white shadow-2xl rounded-2xl">
                 <img
                   src={DeveloperPhoto}
