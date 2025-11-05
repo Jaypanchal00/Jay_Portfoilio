@@ -29,10 +29,19 @@ const Projects = () => {
 
   const projects = [
   {
+    title: 'Amazon Web (Clone) ',
+    description: 'E-commerce web UI with product listings, categories, and responsive layout.',
+    image: 'https://images.pexels.com/photos/5632398/pexels-photo-5632398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+    technologies: ['React', 'HTML', 'CSS', 'JavaScript','Bootstrap','Media Query'],
+    liveLink: 'https://amazon-web-srgf.onrender.com',
+    githubLink: '#',
+    details: 'Built a responsive e-commerce interface inspired by Amazon with clean layout, product cards, and adaptive design.',
+  },
+  {
     title: 'Sonata Watches Website',
     description: 'Modern e-commerce site for Sonata watches with product browsing, filtering, cart, and full responsive design',
     image: 'https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-    technologies: ['HTML', 'CSS', 'JavaScript','Bootstrap','Media Query'],
+    technologies: ['React', 'HTML', 'CSS', 'JavaScript','Bootstrap','Media Query'],
     liveLink: 'https://sonata-web.onrender.com/',
     githubLink: 'https://github.com/Jaypanchal00/Sonata_Web',
     details: 'Built with React, featuring responsive design, product filtering, shopping cart, and smooth animations. Fully functional checkout system implemented.',
@@ -41,7 +50,7 @@ const Projects = () => {
     title: 'Job-Finder Website',
     description: 'A platform to help users search for jobs, view company details, and filter results by category, location, and experience.',
     image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-    technologies: ['HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
+    technologies: ['React', 'HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
     liveLink: 'https://job-finder-cmqu.onrender.com/',
     githubLink: 'https://github.com/Jaypanchal00/Job-finder',
     details: 'Developed using React with dynamic job listings, filter functionality, and responsive layout. Includes interactive UI and clean code structure.',
@@ -50,7 +59,7 @@ const Projects = () => {
     title: 'Furniture Web Application',
     description: 'An online platform showcasing furniture products, allowing users to browse items, view details, and plan their purchase.',
     image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
-    technologies: ['HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
+    technologies: ['React', 'HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
     liveLink: '#',
     githubLink: 'https://github.com/Jaypanchal00/Furniture_Web',
     details: 'React-based furniture web app with interactive UI, responsive design, product showcase, and smooth animations for a modern user experience.',
@@ -66,7 +75,7 @@ const Projects = () => {
           <p className="text-xl text-gray-600 mt-6">Some of my recent work</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -75,15 +84,20 @@ const Projects = () => {
               onMouseEnter={() => setFlippedCard(index)}
               onMouseLeave={() => setFlippedCard(null)}
             >
-              <div className={`relative h-[500px] transition-transform duration-700 transform-style-3d ${flippedCard === index ? 'rotate-y-180' : ''}`}>
+              <div className={`relative h-[420px] transition-transform duration-700 transform-style-3d ${flippedCard === index ? 'rotate-y-180' : ''}`}>
                 <div className="absolute inset-0 backface-hidden">
                   <div className="h-full border-2 border-black overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                    <div className="h-64 overflow-hidden">
+                    <div className="h-48 overflow-hidden relative">
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span className="text-white text-sm font-semibold">{project.title}</span>
+                        <span className="px-2 py-0.5 text-xs bg-white text-black">View</span>
+                      </div>
                     </div>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
