@@ -28,9 +28,7 @@ const Skills = () => {
   const skills = [
     { name: 'React', level: 90, icon: '⚛️' },
     { name: 'JavaScript', level: 85, icon: '🟨' },
-    { name: 'TypeScript', level: 80, icon: '🔷' },
     { name: 'CSS3', level: 90, icon: '🎨' },
-    { name: 'Tailwind', level: 85, icon: '🌊' },
     { name: 'Bootstrap', level: 88, icon: '🅱️' },
     { name: 'HTML5', level: 95, icon: '📝' },
     { name: 'Git', level: 82, icon: '🔀' },
@@ -45,7 +43,7 @@ const Skills = () => {
           <p className="text-xl text-gray-400 mt-6">Technologies I work with</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
           {skills.map((skill, index) => (
             <div
               key={index}

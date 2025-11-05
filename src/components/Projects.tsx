@@ -31,7 +31,7 @@ const Projects = () => {
   {
     title: 'Sonata Watches Website',
     description: 'Modern e-commerce site for Sonata watches with product browsing, filtering, cart, and full responsive design',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
     technologies: ['HTML', 'CSS', 'JavaScript','Bootstrap','Media Query'],
     liveLink: 'https://sonata-web.onrender.com/',
     githubLink: 'https://github.com/Jaypanchal00/Sonata_Web',
@@ -40,7 +40,7 @@ const Projects = () => {
   {
     title: 'Job-Finder Website',
     description: 'A platform to help users search for jobs, view company details, and filter results by category, location, and experience.',
-    image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
     technologies: ['HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
     liveLink: 'https://job-finder-cmqu.onrender.com/',
     githubLink: 'https://github.com/Jaypanchal00/Job-finder',
@@ -49,7 +49,7 @@ const Projects = () => {
   {
     title: 'Furniture Web Application',
     description: 'An online platform showcasing furniture products, allowing users to browse items, view details, and plan their purchase.',
-    image: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
     technologies: ['HTML', 'CSS', 'Bootstrap','JavaScript','Media Query'],
     liveLink: '#',
     githubLink: 'https://github.com/Jaypanchal00/Furniture_Web',
