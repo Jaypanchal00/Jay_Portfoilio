@@ -38,9 +38,18 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    const response = await fetch('https://contactapi-jay.vercel.app/api/contact',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(formData)
+    })
+    alert(response.json())
+    console.log(response.json())
     setFormData({ name: '', email: '', message: '' });
   };
 
