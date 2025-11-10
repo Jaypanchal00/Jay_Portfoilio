@@ -8,6 +8,8 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState<null | { type: 'success' | 'error'; message: string }>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -31,6 +33,12 @@ const Contact = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 3500);
+    return () => clearTimeout(t);
+  }, [toast]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -40,17 +48,30 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    const response = await fetch('https://contactapi-jay.vercel.app/api/contact',{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(formData)
-    })
-    alert(response.json())
-    console.log(response.json())
-    setFormData({ name: '', email: '', message: '' });
+    if (submitting) return;
+    setSubmitting(true);
+    try {
+      const response = await fetch('https://contactapi-jay.vercel.app/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        setToast({ type: 'success', message: (data && (data.message || data.msg)) || 'Message sent successfully' });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setToast({ type: 'error', message: (data && (data.message || data.error)) || 'Failed to send message' });
+      }
+    } catch (err) {
+      setToast({ type: 'error', message: 'Network error. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -144,9 +165,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2 group"
+                disabled={submitting}
+                className={`w-full px-8 py-4 font-semibold transition-all duration-300 flex items-center justify-center gap-2 group ${submitting ? 'bg-gray-400 text-gray-800 cursor-not-allowed' : 'bg-white text-black hover:bg-gray-200'}`}
               >
-                <span>Send Message</span>
+                <span>{submitting ? 'Sending...' : 'Send Message'}</span>
                 <Send size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
@@ -156,6 +178,21 @@ const Contact = () => {
         <div className={`mt-16 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <p className="text-gray-500">© 2025 Jay Panchal. All rights reserved.</p>
         </div>
+
+        {toast && (
+          <div className="fixed bottom-6 right-6 z-50">
+            <div
+              className={`min-w-[260px] max-w-sm px-4 py-3 rounded shadow-lg border ${
+                toast.type === 'success'
+                  ? 'bg-green-600/20 border-green-400 text-green-200'
+                  : 'bg-red-600/20 border-red-400 text-red-200'
+              }`}
+            >
+              <p className="font-semibold mb-1">{toast.type === 'success' ? 'Success' : 'Error'}</p>
+              <p className="text-sm">{toast.message}</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
