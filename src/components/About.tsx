@@ -1,99 +1,90 @@
-import { useEffect, useRef, useState } from 'react';
-import { Code2, Palette, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
+import { MapPin, ExternalLink, Layout, Database, Server } from 'lucide-react';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const experiences = [
+    {
+      company: "Rootscoder LLP",
+      role: "MERN Stack Intern",
+      period: "6 Months",
+      location: "Ahmedabad, India",
+      description: "Collaborated with the engineering team to build scalable web applications. Developed modular frontend components and optimized database schemas for production-grade systems.",
+      link: "https://rootscoder.com"
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  const features = [
-    {
-      icon: <Code2 size={40} />,
-      title: 'Clean Code',
-      description: 'Writing maintainable and scalable code following best practices',
-    },
-    {
-      icon: <Palette size={40} />,
-      title: 'Modern Design',
-      description: 'Creating beautiful interfaces with attention to detail',
-    },
-    {
-      icon: <Zap size={40} />,
-      title: 'Fast Performance',
-      description: 'Optimizing for speed and seamless user experience',
-    },
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="min-h-screen flex items-center bg-white text-black px-6 py-20">
-      <div className="container mx-auto max-w-7xl">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">About Me</h2>
-          <div className="h-1 w-24 bg-black mx-auto"></div>
-        </div>
+    <section id="about" className="py-20 md:py-32 px-6 md:px-8 bg-white relative">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <SectionHeading 
+          title="Professional Journey" 
+          subtitle="Engineering robust digital solutions with a focus on code quality and performance."
+          align="left"
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <p className="text-xl leading-relaxed text-gray-700 mb-6">
-              I'm a passionate frontend developer with a keen eye for design and a love for creating
-              intuitive user experiences. My journey in web development started with a curiosity about
-              how websites work, and it has evolved into a commitment to crafting pixel-perfect interfaces.
-            </p>
-            <p className="text-xl leading-relaxed text-gray-700">
-              I specialize in modern JavaScript frameworks and have a strong foundation in responsive
-              design principles. I'm always eager to learn new technologies and push the boundaries
-              of what's possible on the web.
-            </p>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-black blur-3xl opacity-10"></div>
-              <img
-                src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Workspace"
-                className="relative w-full h-80 object-cover shadow-2xl"
-              />
+        <div className="grid lg:grid-cols-1 gap-12 lg:gap-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-16 md:space-y-24"
+          >
+            {/* Pillars Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+               {[
+                 { icon: Layout, title: "Frontend", desc: "High-performance interfaces using HTML, CSS, Bootstrap, and React.js." },
+                 { icon: Server, title: "Backend", desc: "Secure server-side logic and RESTful APIs with Node.js and Express.js." },
+                 { icon: Database, title: "Database", desc: "Scalable data models and high-volume data management with MongoDB." }
+               ].map((item, idx) => (
+                 <div key={idx} className="p-8 md:p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
+                    <div className="w-12 h-12 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                       <item.icon size={24} />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-black text-slate-950 mb-3">{item.title}</h3>
+                    <p className="text-slate-600 text-sm md:text-base leading-relaxed font-semibold opacity-80">{item.desc}</p>
+                 </div>
+               ))}
             </div>
-          </div>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`p-8 border-2 border-black hover:bg-black hover:text-white transition-all duration-500 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
-            >
-              <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-gray-600 group-hover:text-gray-300 transition-colors">
-                {feature.description}
-              </p>
+            {/* Ethos & Experience */}
+            <div className="grid lg:grid-cols-2 gap-16 md:gap-20">
+               <div className="space-y-8 text-center lg:text-left">
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-950 tracking-tight">Personal Ethos</h3>
+                  <p className="text-slate-600 text-lg md:text-xl font-semibold leading-relaxed opacity-90">
+                    I am driven by a passion for solving complex problems through clean and efficient code. My experience at <span className="text-slate-950 font-bold">Rootscoder LLP</span> has equipped me with the skills to handle high-performance applications.
+                  </p>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-4">
+                     {["Clean Code", "Agile", "MERN Stack", "Problem Solver"].map((tag, i) => (
+                       <span key={i} className="px-5 py-2.5 rounded-xl bg-white border border-slate-100 text-[10px] md:text-xs font-black text-slate-500 uppercase tracking-widest shadow-sm">
+                         {tag}
+                       </span>
+                     ))}
+                  </div>
+               </div>
+
+               <div className="space-y-10">
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-950 tracking-tight text-center lg:text-left">Recent Experience</h3>
+                  {experiences.map((exp, idx) => (
+                    <div key={idx} className="p-8 md:p-10 rounded-3xl bg-blue-50/40 border border-blue-100 relative group hover:bg-white hover:shadow-2xl transition-all">
+                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                          <h4 className="text-2xl font-black text-slate-950 leading-none">{exp.company}</h4>
+                          <span className="inline-block w-fit text-blue-600 bg-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100 shadow-sm">
+                            {exp.period}
+                          </span>
+                       </div>
+                       <p className="text-blue-600 text-xs font-black mb-6 tracking-widest uppercase">{exp.role}</p>
+                       <p className="text-slate-600 text-base leading-relaxed mb-8 italic font-semibold opacity-80">{exp.description}</p>
+                       <div className="flex flex-wrap gap-6 text-[11px] text-slate-500 font-bold uppercase tracking-widest">
+                          <span className="flex items-center gap-2"><MapPin size={16} /> Ahmedabad, India</span>
+                          <a href={exp.link} target="_blank" className="flex items-center gap-2 hover:text-blue-600 transition-all underline underline-offset-8 decoration-blue-200 hover:decoration-blue-600"><ExternalLink size={16} /> Website</a>
+                       </div>
+                    </div>
+                  ))}
+               </div>
             </div>
-          ))}
+          </motion.div>
         </div>
       </div>
     </section>

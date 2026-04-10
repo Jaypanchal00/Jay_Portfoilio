@@ -2,57 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scroll-behavior: smooth;
+:root {
+  --background: #ffffff;
+  --foreground: #020617;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --border: #f1f5f9;
+  --input: #f1f5f9;
+  --ring: #94a3b8;
+  --primary: #020617;
+  --primary-foreground: #ffffff;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-.perspective {
-  perspective: 1000px;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+@layer base {
+  * {
+    border-color: #f1f5f9;
   }
-  50% {
-    transform: translateY(-20px);
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-900;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-950;
+    font-family: 'Urbanist', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full hover:bg-slate-400;
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
+@layer components {
+  .bg-dot-pattern {
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+      linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+  }
 
-::-webkit-scrollbar-track {
-  background: #000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #fff;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ccc;
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-slate-100 shadow-sm transition-all;
+  }
 }
