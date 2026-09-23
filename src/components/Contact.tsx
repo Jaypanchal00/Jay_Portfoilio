@@ -30,12 +30,16 @@ const Contact = () => {
     if (submitting) return;
     setSubmitting(true);
     try {
-      const response = await fetch('https://contactapi-jay.vercel.app/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "3d1298e5-b985-4f58-b27e-82e4ce3ce3bf",
+          ...formData
+        }),
       });
 
       const data = await response.json().catch(() => ({}));
