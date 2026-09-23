@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, CheckCircle2, Download } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -41,10 +41,11 @@ const Hero = () => {
                 View Projects <ArrowRight size={18} />
               </a>
               <a
-                href="#contact"
+                href="/Jay_Panchal_Resume.pdf"
+                download="Jay_Panchal_Resume.pdf"
                 className="w-full sm:w-auto px-10 py-4.5 bg-white text-slate-900 font-bold rounded-xl border border-slate-200 hover:bg-slate-50 transition-all flex items-center justify-center gap-3 text-sm"
               >
-                Get in Touch
+                Download Resume <Download size={18} />
               </a>
             </div>
 
