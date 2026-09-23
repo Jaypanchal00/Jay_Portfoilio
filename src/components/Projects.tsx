@@ -5,6 +5,15 @@ import SectionHeading from './SectionHeading';
 const Projects = () => {
   const projects = [
     {
+      title: 'Sellora Online Marketplace',
+      type: 'Full Stack Web App',
+      description: 'An OLX-style marketplace with user authentication, product listings, wishlist, search/filters, and chat functionality.',
+      image: 'https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200',
+      technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+      liveLink: 'https://sellora-e610.onrender.com/',
+      githubLink: 'https://github.com/Jaypanchal00/sellora'
+    },
+    {
       title: 'Enterprise eCommerce Engine',
       type: 'Full Stack MERN',
       description: 'A high-performance eCommerce platform with product management and secure checkout functionality.',

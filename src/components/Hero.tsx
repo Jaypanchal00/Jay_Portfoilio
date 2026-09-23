@@ -51,10 +51,6 @@ const Hero = () => {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 pt-4">
               <div className="flex items-center gap-3">
                  <CheckCircle2 size={16} className="text-blue-600" />
-                 <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">6+ Months Internship</span>
-              </div>
-              <div className="flex items-center gap-3">
-                 <CheckCircle2 size={16} className="text-blue-600" />
                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Ahmedabad, India</span>
               </div>
             </div>
